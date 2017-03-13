@@ -20,6 +20,10 @@
 
         // Display Album HTML
         function displayAlbums(data) {
+
+            resultHTML = "";
+            console.log(resultHTML);
+
             // Hide anything already visible
             albumsList.empty();
 
@@ -30,6 +34,7 @@
                 resultHTML += "<li class='no-albums'><i class='material-icons icon-help'>help_outline</i>No albums found that match: " + searchField.val() + "</li>";
             } else {
                 $.each(albumData, function (i, album) {
+                    // Reset resultsHTML
                     createAlbumListItem(album);
                 });
             }
