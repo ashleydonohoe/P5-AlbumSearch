@@ -32,12 +32,15 @@
                 resultHTML += "<li class='no-albums'><i class='material-icons icon-help'>help_outline</i>No albums found that match: " + searchField.val() + "</li>";
             } else {
                 $.each(albumData, function (i, album) {
+                    let albumID = album.id;
+                    let albumSpotifyURL = album["external_urls"].spotify;
+                    console.log(albumSpotifyURL);
                     let albumImageURL = album.images[0].url;
                     let albumTitle = album.name;
                     let albumArtist = album.artists[0].name;
 
                     resultHTML += "<li><div class='album-wrap'>";
-                    resultHTML += "<img class='album-art' src='" + albumImageURL + "'></div>";
+                    resultHTML += "<a data-id='" + albumID + "' href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
                     resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
                     resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
                     resultHTML += "</li>";
