@@ -1,7 +1,7 @@
 (function() {
     const searchField = $("#search");
     const searchForm = document.querySelector("form");
-    const albumsList = $("#albums");
+    const albumsList = $(".album-list");
     const description = $(".desc");
     let searchTerm;
 
@@ -20,14 +20,31 @@
 
         // Display Album HTML
         function displayAlbums(data) {
-            description.hide();
-            const albums = data.albums;
-            if(albums.total < 1) {
-                albumsList.append("<li class='no-albums'><i class='material-icons icon-help'>help_outline</i>No albums found that match: " + searchField.val() + "</li>");
-            } else {
+            // Hide anything already visible
+            albumsList.empty();
 
+            let resultHTML = "";
+
+            const albumsCount = data.albums.total;
+            const albumData = data.albums.items;
+
+            if(albumsCount < 1) {
+                resultHTML += "<li class='no-albums'><i class='material-icons icon-help'>help_outline</i>No albums found that match: " + searchField.val() + "</li>";
+            } else {
+                $.each(albumData, function (i, album) {
+                    let albumImageURL = album.images[0].url;
+                    let albumTitle = album.name;
+                    let albumArtist = album.artists[0].name;
+
+                    resultHTML += "<li><div class='album-wrap'>";
+                    resultHTML += "<img class='album-art' src='" + albumImageURL + "'></div>";
+                    resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
+                    resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
+                    resultHTML += "</li>";
+                });
             }
-        }
+                albumsList.html(resultHTML);
+            }
 
         function createAlbumListItem(album) {
         }
