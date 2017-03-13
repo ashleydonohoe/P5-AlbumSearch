@@ -217,7 +217,15 @@ button {
 @media (min-width: 0) and (max-width: 549px) {
     .album-list li {
         text-align: center;
-    };
+    }
+
+    .album-list img {
+        width: 300px;
+    }
+
+    .details {
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 550px) {
@@ -239,8 +247,8 @@ button {
     }
 
     .album-art {
-        width: 100%;
-        min-height: 100%;
+        max-width: 100%;
+        height: auto;
         -webkit-transition: -webkit-transform .4s ease-out;
         transition: transform .4s ease-out;
     }
