@@ -2,8 +2,7 @@
     const searchField = $("#search");
     const searchForm = document.querySelector("form");
     const albumsList = $(".album-list");
-    const description = $(".desc");
-    let resultHTML;
+    let resultHTML = "";
     let searchTerm;
 
     searchForm.addEventListener("submit", executeSearch);
@@ -34,7 +33,19 @@
                     createAlbumListItem(album);
                 });
             }
+
+            // Add HTML to page
                 albumsList.html(resultHTML);
+
+            // Add event listener for the details buttons
+            const albumDetailsButton = document.querySelectorAll("button.details");
+            for(let i = 0; i < albumDetailsButton.length; i++) {
+                console.log("Adding event listener");
+                albumDetailsButton[i].addEventListener("click", function(event) {
+                    const albumId = $(this).data("id");
+                    showAlbumInfo(albumId);
+                });
+            }
             }
 
         function createAlbumListItem(album) {
@@ -45,14 +56,21 @@
             let albumArtist = album.artists[0].name;
 
             resultHTML += "<li><div class='album-wrap'>";
-            resultHTML += "<a data-id='" + albumID + "' href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
+            resultHTML += "<a href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
             resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
             resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
+            resultHTML += "<button class='details' data-id='" + albumID +"'>See Details</button>";
             resultHTML += "</li>";
         }
 
         // Start AJAX request to Spotify
         $.getJSON(spotifyBaseUrl, spotifyOptions, displayAlbums);
+    } // End function for getting/loading initial data
+
+
+    // Will download and load album info from https://api.spotify.com/v1/albums/:id
+    function showAlbumInfo(albumId) {
+        console.log(albumId);
     }
 
 })();
