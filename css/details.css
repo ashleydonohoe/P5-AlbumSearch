@@ -13,10 +13,11 @@
     width: 100%;
     margin-top: 5%;
     padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #album-cover {
-    float: left;
     width: 45%;
     margin-right: 20%;
 }
@@ -29,6 +30,7 @@
 ol {
     list-style-position: inside;
     margin: 0;
+    padding-left: 0;
 }
 
 ol li {
@@ -37,6 +39,23 @@ ol li {
 }
 
 h4 {
+    -webkit-margin-before: 1.33em;
     margin-top: 0;
 }
 
+a {
+    color: black;
+}
+
+@media (max-width: 400px) {
+
+    #album-cover {
+        width: 100%;
+        margin: 0 auto 5%;
+    }
+
+    #album-cover img {
+        margin: 0 auto;
+        display: block;
+    }
+}
