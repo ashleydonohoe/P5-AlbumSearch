@@ -41,16 +41,6 @@
 
             // Add HTML to page
                 albumsList.html(resultHTML);
-
-            // Add event listener for the details buttons
-            const albumDetailsButton = document.querySelectorAll("button.details");
-            for(let i = 0; i < albumDetailsButton.length; i++) {
-                console.log("Adding event listener");
-                albumDetailsButton[i].addEventListener("click", function(event) {
-                    const albumId = $(this).data("id");
-                    showAlbumInfo(albumId);
-                });
-            }
             }
 
         function createAlbumListItem(album) {
@@ -64,7 +54,9 @@
             resultHTML += "<a href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
             resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
             resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
-            resultHTML += "<button class='details' data-id='" + albumID +"'>See Details</button>";
+            resultHTML += "<form action='album_details.html' method='GET'>";
+            resultHTML += "<input style='display: none;' type='text' name='album' value='" + albumID + "'>";
+            resultHTML += "<input type='submit' value='See Details' class='details' data-id='" + albumID +"'>";
             resultHTML += "</li>";
         }
 
@@ -72,10 +64,5 @@
         $.getJSON(spotifyBaseUrl, spotifyOptions, displayAlbums);
     } // End function for getting/loading initial data
 
-
-    // Will download and load album info from https://api.spotify.com/v1/albums/:id
-    function showAlbumInfo(albumId) {
-        console.log(albumId);
-    }
 
 })();

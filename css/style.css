@@ -168,6 +168,10 @@ button {
     background: cadetblue;
 }
 
+.modal button {
+    width: 55px;
+}
+
 /* =================================
   Layout Styles
 ==================================== */
@@ -260,7 +264,7 @@ button {
 
     .album-title {
         padding-right: 1.25em;
-    };
+    }
 }
 
 @media (min-width: 769px) {
@@ -284,13 +288,13 @@ button {
 
     .album-list .no-albums {
         width: 100%;
-    };
+    }
 }
 
 @media (min-width: 769px) and (max-width: 999px) {
     .album-list li:nth-of-type(3n+1) {
         clear: left;
-    };
+    }
 }
 
 @media (min-width: 1000px) {
@@ -300,5 +304,5 @@ button {
 
     .album-list li:nth-of-type(4n+1) {
         clear: left;
-    };
+    }
 }
