@@ -18,12 +18,34 @@
     downloadAlbumInfo(album);
 
 
+    // Starts AJAX
     function downloadAlbumInfo(album) {
-        albumHeading.textContent = "Test Title (2017)";
-        artistName.textContent = "Test Name";
-        imageBox.innerHTML = '<img src="http://www.excellfeeders.com/wp-content/uploads/2012/05/placeholder-640x640.png" alt="placeholder">';
-        trackList.innerHTML = "<h4>Track List</h4><ol><li>Track1</li><li>Track2</li><li>Track3</li><li>Track4</li><li>Track5</li><li>Track6</li></ol>";
+        // AJAX setup
+        var spotifyBaseUrl = "https://api.spotify.com/v1/albums/" + album;
 
+        // Start AJAX request to Spotify
+        $.getJSON(spotifyBaseUrl, {}, displayAlbumInfo);
+    }
+
+    // Handles Data returned
+    function displayAlbumInfo(data) {
+        console.log(data);
+        const title = data.name;
+        const year = data["release_date"];
+        const artist = data.artists[0].name;
+        const image = data.images[0].url;
+        const tracks = data.tracks.items;
+
+        albumHeading.textContent = title + " (" + year + ")";
+        artistName.textContent = artist;
+        imageBox.innerHTML = '<img src="' + image + '" alt="album cover">';
+
+        let trackListHTML = "<h4>Track List</h4><ol>";
+        for(let i = 0; i < tracks.length; i++) {
+            trackListHTML += "<li>" + tracks[i].name + "</li>";
+        }
+        trackListHTML += "</ol>";
+        trackList.innerHTML = trackListHTML;
     }
 
 })();

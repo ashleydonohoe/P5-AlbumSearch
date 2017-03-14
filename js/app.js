@@ -54,7 +54,7 @@
             resultHTML += "<a href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
             resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
             resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
-            resultHTML += "<form action='album_details.html' method='GET'>";
+            resultHTML += "<form action='album_details.html' method='GET' target='_blank'>";
             resultHTML += "<input style='display: none;' type='text' name='album' value='" + albumID + "'>";
             resultHTML += "<input type='submit' value='See Details' class='details' data-id='" + albumID +"'>";
             resultHTML += "</li>";
