@@ -1,0 +1,42 @@
+#album-details {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#album-title-year,
+#artist-name,
+#album-cover {
+    text-align: center;
+}
+
+.inner-wrapper {
+    width: 100%;
+    margin-top: 5%;
+    padding: 2%;
+}
+
+#album-cover {
+    float: left;
+    width: 45%;
+    margin-right: 20%;
+}
+
+#album-cover img {
+    max-width: 100%;
+    height: auto;
+}
+
+ol {
+    list-style-position: inside;
+    margin: 0;
+}
+
+ol li {
+    font-size: 1.3em;
+    line-height: 2;
+}
+
+h4 {
+    margin-top: 0;
+}
+

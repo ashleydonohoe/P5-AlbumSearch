@@ -7,8 +7,9 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/details.css">
 </head>
-<body>
+<body id="album-details">
 
 <div class="main-header">
     <div class="inner">
@@ -22,9 +23,11 @@
         <h3 id="artist-name"></h3>
     </div>
 
-    <div id="album-cover"></div>
+    <div class="inner-wrapper">
+        <div id="album-cover"></div>
 
-    <div id="track-list"></div>
+        <div id="track-list"></div>
+    </div>
 </div>
 
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
