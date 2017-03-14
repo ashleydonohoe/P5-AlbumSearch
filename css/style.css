@@ -160,7 +160,7 @@ button {
     margin: auto;
 }
 
-.details {
+.show-details-button {
     display: block;
     width: 50%;
     height: auto;
@@ -227,7 +227,7 @@ button {
         width: 300px;
     }
 
-    .details {
+    .show-details-button {
         margin: 0 auto;
     }
 }

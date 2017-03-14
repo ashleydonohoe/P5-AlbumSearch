@@ -1,6 +1,7 @@
 (function() {
     const searchField = $("#search");
-    const searchForm = document.querySelector("form");
+    const searchForm = document.querySelector(".search-form");
+    const detailsForm = document.getElementById("show-details-form");
     const albumsList = $(".album-list");
     let resultHTML = "";
     let searchTerm;
@@ -41,6 +42,11 @@
 
             // Add HTML to page
                 albumsList.html(resultHTML);
+                // Add event listener for the see details buttons
+                const detailsButtons = document.querySelectorAll(".show-details-button");
+                for(let i = 0; i < detailsButtons.length; i++) {
+                    detailsButtons[i].addEventListener("click", submitForm);
+                }
             }
 
         function createAlbumListItem(album) {
@@ -54,9 +60,7 @@
             resultHTML += "<a href='" + albumSpotifyURL + "' target='_blank'><img class='album-art' src='" + albumImageURL + "'></a></div>";
             resultHTML += "<span class='album-title'>" + albumTitle + "</span>";
             resultHTML += "<span class='album-artist'>" + albumArtist + "</span>";
-            resultHTML += "<form action='album_details.html' method='GET' target='_blank'>";
-            resultHTML += "<input style='display: none;' type='text' name='album' value='" + albumID + "'>";
-            resultHTML += "<input type='submit' value='See Details' class='details' data-id='" + albumID +"'>";
+            resultHTML += "<button class='show-details-button' data-id='" + albumID + "'>Show Details</button>";
             resultHTML += "</li>";
         }
 
@@ -64,5 +68,11 @@
         $.getJSON(spotifyBaseUrl, spotifyOptions, displayAlbums);
     } // End function for getting/loading initial data
 
+    // Handling form click
+    function submitForm() {
+        const albumID = $(this).data("id");
+        $("#album-to-search").attr("value", albumID);
+        detailsForm.submit();
+    }
 
 })();
