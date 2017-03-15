@@ -19,7 +19,7 @@
 
 #album-cover {
     width: 45%;
-    margin-right: 20%;
+    margin-right: 10%;
 }
 
 #album-cover img {
@@ -34,8 +34,9 @@ ol {
 }
 
 ol li {
-    font-size: 1.3em;
+    font-size: 0.9em;
     line-height: 2;
+    word-wrap: break-word;
 }
 
 h4 {
